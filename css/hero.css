@@ -68,17 +68,12 @@
   aspect-ratio: 3 / 4;
 }
 
-.hero__svg-defs {
-  position: absolute;
-  overflow: hidden;
-}
-
 .hero__figure video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: url(#hero-figure-alpha);
+  mix-blend-mode: screen;
 }
 
 .hero__figure--goku {

@@ -27,21 +27,6 @@
     </nav>
 
     <section id="hero" class="hero">
-        <svg width="0" height="0" aria-hidden="true" focusable="false" class="hero__svg-defs">
-            <defs>
-                <filter id="hero-figure-alpha" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="
-                        1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                        0.33 0.33 0.33 0 0" result="luma" />
-                    <feComponentTransfer in="luma">
-                        <feFuncA type="linear" slope="6" intercept="-0.9" />
-                    </feComponentTransfer>
-                </filter>
-            </defs>
-        </svg>
-
         <div class="hero__bg">
             <video class="hero__bg-video" src="assets/videos/hero-bg-namekusei.mp4" autoplay loop muted playsinline preload="auto"></video>
         </div>

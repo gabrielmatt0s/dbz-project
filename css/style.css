@@ -1,0 +1,157 @@
+:root {
+  /* Fontes */
+  --font-body: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
+  --font-hero-stamp: 'Anton', ui-sans-serif, system-ui, sans-serif;
+  --font-hero-saga: 'Oswald', 'Outfit', ui-sans-serif, sans-serif;
+
+  /* Cores base */
+  --bg-deep: #04060f;
+  --bg-mid: #0a1228;
+  --bg-surface: #121a3a;
+  --bg-surface-raised: #1a2350;
+  --bg-overlay: rgba(8, 12, 28, 0.74);
+
+  /* Texto */
+  --text-primary: #f5f0e8;
+  --text-muted: rgba(247, 243, 232, 0.64);
+  --text-faint: rgba(245, 240, 232, 0.48);
+
+  /* Acentos */
+  --accent-star: #ff7a18;
+  --accent-star-dim: rgba(255, 122, 24, 0.12);
+  --accent-star-glow: rgba(255, 122, 24, 0.35);
+  --cosmic-cyan: #29c2ff;
+  --cosmic-purple: #6c2bd9;
+  --cosmic-rose: #ffd23f;
+
+  /* Bordas / foco */
+  --border-subtle: rgba(245, 240, 232, 0.12);
+  --border-strong: rgba(245, 240, 232, 0.22);
+  --ring-focus: rgba(41, 194, 255, 0.55);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Utility labels */
+  --ls-label: 0.12em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.section-stub {
+  min-height: 100vh;
+}
+
+/* ---------- Floating Nav ---------- */
+
+.floating-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  z-index: 500; /* acima de hero/videos/personagens/jornada; unica camada de navegacao */
+  transform: translate(-50%, -12px);
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  background: linear-gradient(180deg, var(--bg-surface-raised), var(--bg-overlay));
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  box-shadow: 0 12px 32px var(--accent-star-glow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+.floating-nav.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.floating-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 6px 10px;
+  list-style: none;
+}
+
+.floating-nav__item {
+  display: flex;
+  align-items: center;
+}
+
+.floating-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.3s var(--ease-out-expo), background-color 0.3s var(--ease-out-expo),
+    opacity 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+}
+
+.floating-nav__link:hover {
+  color: var(--text-primary);
+  background-color: var(--accent-star-dim);
+}
+
+.floating-nav__link:focus-visible {
+  outline: 2px solid var(--ring-focus);
+  outline-offset: 2px;
+}
+
+.floating-nav__link--active {
+  color: var(--accent-star);
+}
+
+.floating-nav__separator {
+  width: 1px;
+  height: 16px;
+  background-color: var(--border-subtle);
+}
+
+@media (max-width: 640px) {
+  .floating-nav {
+    top: 12px;
+  }
+
+  .floating-nav__list {
+    gap: 2px;
+    padding: 4px 6px;
+  }
+
+  .floating-nav__link {
+    padding: 8px 10px;
+    font-size: 0.65rem;
+  }
+
+  .floating-nav__separator {
+    height: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav {
+    transform: translate(-50%, 0);
+    transition: opacity 0.2s linear;
+  }
+}

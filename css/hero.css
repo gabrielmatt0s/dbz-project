@@ -1,0 +1,242 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-deep);
+}
+
+/* 1. Fundo */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 2. Overlay dramatico */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-overlay) 45%, transparent) 0%, transparent 35%, transparent 60%, color-mix(in srgb, var(--bg-overlay) 45%, transparent) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--bg-overlay) 35%, transparent) 0%, transparent 20%, transparent 80%, color-mix(in srgb, var(--bg-overlay) 35%, transparent) 100%);
+}
+
+/* 3. Glows decorativos */
+.hero__goku-glow,
+.hero__freeza-glow {
+  position: absolute;
+  bottom: -10%;
+  width: clamp(260px, 32vw, 560px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.hero__goku-glow {
+  left: -8%;
+  background: radial-gradient(circle, var(--accent-star-glow) 0%, transparent 70%);
+}
+
+.hero__freeza-glow {
+  right: -8%;
+  background: radial-gradient(circle, var(--cosmic-purple) 0%, transparent 70%);
+  opacity: 0.55;
+}
+
+/* 4. Figuras */
+.hero__figures {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__figure {
+  position: absolute;
+  bottom: -2%;
+  width: clamp(240px, 34vw, 540px);
+  aspect-ratio: 3 / 4;
+}
+
+.hero__svg-defs {
+  position: absolute;
+  overflow: hidden;
+}
+
+.hero__figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: url(#hero-figure-alpha);
+}
+
+.hero__figure--goku {
+  left: calc(-6% + 100px);
+}
+
+.hero__figure--freeza {
+  right: -6%;
+}
+
+/* 5. Overlay-front */
+.hero__overlay-front {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 45%, transparent 0%, color-mix(in srgb, var(--bg-overlay) 40%, transparent) 100%);
+}
+
+/* 6. Poster */
+.hero__poster {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 920px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  padding: 0 1rem;
+}
+
+/* 7. Pill */
+.hero__pill {
+  margin: 0;
+  font-family: var(--font-hero-saga);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent-star);
+  background: var(--accent-star-dim);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.55em 1.4em;
+}
+
+/* 8. Titulo */
+.hero__title {
+  margin: 0;
+  font-family: var(--font-hero-stamp);
+  line-height: 0.98;
+}
+
+.hero__title-line {
+  display: block;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  text-shadow: 0 4px 24px color-mix(in srgb, var(--bg-deep) 80%, transparent);
+}
+
+.hero__title-line--main {
+  color: var(--text-primary);
+}
+
+.hero__title-line--saga {
+  color: var(--cosmic-rose);
+}
+
+/* 9. Tagline */
+.hero__tagline {
+  margin: 0;
+  font-family: var(--font-hero-saga);
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* 10. Indicador de scroll */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(20px, 5vh, 48px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.hero__scroll-label {
+  font-family: var(--font-hero-saga);
+  font-size: clamp(0.65rem, 1vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+
+.hero__scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-star);
+  color: var(--accent-star);
+  transition: background-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+}
+
+.hero__scroll:hover .hero__scroll-icon,
+.hero__scroll:focus-visible .hero__scroll-icon {
+  background-color: var(--accent-star-dim);
+}
+
+.hero__scroll:focus-visible {
+  outline: 2px solid var(--ring-focus);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .hero__poster {
+    top: 40%;
+    width: min(94%, 720px);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .hero__figure {
+    width: clamp(150px, 52vw, 260px);
+  }
+
+  .hero__figure--goku {
+    left: -14%;
+  }
+
+  .hero__figure--freeza {
+    right: -14%;
+  }
+
+  .hero__goku-glow,
+  .hero__freeza-glow {
+    width: clamp(200px, 60vw, 340px);
+  }
+
+  .hero__poster {
+    top: 38%;
+    width: 100%;
+    padding: 0 1.25rem;
+  }
+
+  .hero__title-line {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+}

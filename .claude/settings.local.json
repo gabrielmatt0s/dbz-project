@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npx --version)",
+      "Bash(node -e \"require\\('playwright'\\); console.log\\('playwright available'\\)\")",
+      "Bash(npm ls *)",
+      "Read(//c//**)",
+      "Bash(node shot.js)",
+      "Bash(taskkill //F //PID 2129)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 10384)",
+      "Read(//c/Users/Usuario/AppData/Local/Temp/claude/c--Users-Usuario-Desktop-Projeto-Goku/d84ce5ee-4e30-400d-8e69-c5c44e214501/scratchpad/pw/**)",
+      "Bash(taskkill //F //PID 45672)",
+      "Bash(nohup py -3 -m http.server 8843)",
+      "Bash(curl -sf http://localhost:8843/index.html -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(taskkill //F //PID 20008)",
+      "Bash(taskkill //F //PID 51180)",
+      "Bash(ls .claude/skills)",
+      "Bash(ls .claude)",
+      "Bash(python -c \"import playwright\")",
+      "Bash(pip show *)",
+      "Bash(pip install *)",
+      "Bash(python shot.py \"http://localhost:8791/index.html\" saga-desktop.png 1600 900 \"#saga\")",
+      "Bash(python shot2.py \"http://localhost:8791/index.html\" saga-top.png 1600 900 \"#saga\")",
+      "Bash(python shot2.py \"http://localhost:8791/index.html\" saga-mobile.png 390 844 \"#saga\")",
+      "Bash(python shot2.py \"http://localhost:8791/index.html\" saga-mobile2.png 390 844 \"#saga\")",
+      "Bash(python shot3.py \"http://localhost:8791/index.html\" saga-mobile-full.png 390 844 \"#saga\")"
+    ]
+  }
+}

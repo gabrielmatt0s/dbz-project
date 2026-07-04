@@ -1,0 +1,241 @@
+/* ---------- Personagens ---------- */
+
+:root {
+  /* Tokens especificos da secao Personagens (radar verde do print de referencia) */
+  --personagens-bg: #102e21;
+  --personagens-grid-line: rgba(2, 10, 6, 0.5);
+  --personagens-glow: rgba(52, 199, 89, 0.45);
+}
+
+.personagens {
+  position: relative;
+  overflow-x: hidden;
+  background: var(--personagens-bg);
+}
+
+/* 1. Fundo */
+.personagens__particles-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.personagens__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--personagens-grid-line) 2px, transparent 2px),
+    linear-gradient(90deg, var(--personagens-grid-line) 2px, transparent 2px);
+  background-size: 72px 72px;
+}
+
+.personagens__particles-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 45% 40% at 8% 12%, var(--personagens-glow) 0%, transparent 70%);
+}
+
+.personagens__particles-bg::before {
+  content: '';
+  position: absolute;
+  left: 4%;
+  top: 58%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cosmic-rose);
+  box-shadow: 0 0 12px 4px var(--cosmic-rose);
+}
+
+/* 2. Container / Header */
+.personagens__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.personagens__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  margin: 0 auto clamp(2rem, 6vh, 4rem);
+  max-width: 640px;
+}
+
+.personagens__eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent-star);
+}
+
+.personagens__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: var(--text-primary);
+}
+
+.personagens__subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* 3. Stage — composicao livre */
+/* Altura e coordenadas verticais em px/vw (nunca vh): presas ao viewport
+   height, "top" percentual comprimiria as fileiras em janelas baixas e
+   largas enquanto o tamanho dos personagens (vw) permanece igual, causando
+   sobreposicao entre fileiras. */
+.personagens__stage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(1950px, 165vw, 2350px);
+}
+
+.personagem {
+  position: absolute;
+  transform: translateX(-50%);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 12vw;
+  transition: transform 0.5s var(--ease-spring), filter 0.4s var(--ease-out-expo);
+}
+
+.personagem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px var(--bg-overlay));
+}
+
+.personagem figcaption {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.personagem:hover {
+  transform: translateX(-50%) translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 4px 18px var(--accent-star-glow));
+}
+
+/* Coordenadas / escalas independentes por personagem — espalhados pela
+   secao inteira, em 3 bandas verticais bem separadas (top em clamp px/vw,
+   nunca %, para nao comprimir com a altura do estagio) */
+
+/* Banda 1 (topo) */
+.personagem--goku {
+  left: 12%;
+  top: clamp(20px, 3vw, 60px);
+  width: clamp(175px, 18vw, 260px);
+  z-index: 4;
+}
+
+.personagem--vegeta {
+  left: 76%;
+  top: clamp(0px, 1vw, 30px);
+  width: clamp(175px, 18vw, 260px);
+  z-index: 4;
+}
+
+.personagem--gohan {
+  left: 44%;
+  top: clamp(200px, 16vw, 280px);
+  width: clamp(150px, 15vw, 230px);
+  z-index: 3;
+}
+
+/* Banda 2 (meio) */
+.personagem--ginyu {
+  left: 8%;
+  top: clamp(720px, 54vw, 860px);
+  width: clamp(165px, 16vw, 250px);
+  z-index: 3;
+}
+
+.personagem--kuririn {
+  left: 80%;
+  top: clamp(660px, 50vw, 800px);
+  width: clamp(150px, 15vw, 230px);
+  z-index: 3;
+}
+
+.personagem--zarbon {
+  left: 45%;
+  top: clamp(870px, 64vw, 1010px);
+  width: clamp(175px, 18vw, 270px);
+  z-index: 3;
+}
+
+/* Banda 3 (base) */
+.personagem--dodoria {
+  left: 14%;
+  top: clamp(1380px, 104vw, 1600px);
+  width: clamp(180px, 19vw, 280px);
+  z-index: 3;
+}
+
+.personagem--piccolo {
+  left: 78%;
+  top: clamp(1340px, 100vw, 1560px);
+  width: clamp(190px, 20vw, 300px);
+  z-index: 4;
+}
+
+.personagem--freeza {
+  left: 46%;
+  top: clamp(1480px, 112vw, 1720px);
+  width: clamp(175px, 18vw, 270px);
+  z-index: 4;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .personagens__stage {
+    position: static;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .personagem {
+    position: static;
+    transform: none;
+    width: min(60vw, 220px);
+  }
+
+  .personagem:hover {
+    transform: translateY(-4px) scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .personagem {
+    transition: none;
+  }
+}

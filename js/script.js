@@ -101,6 +101,81 @@ function initFloatingNav() {
   });
 }
 
+function initHeroFigureKeying() {
+  var figures = Array.prototype.slice.call(document.querySelectorAll('.hero__figure'));
+  if (!figures.length) return;
+
+  figures.forEach(function (figure) {
+    var video = figure.querySelector('.hero__figure-source');
+    var canvas = figure.querySelector('.hero__figure-canvas');
+    if (!video || !canvas) return;
+
+    var ctx = canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) return;
+
+    var srcRect = null;
+
+    function updateSrcRect() {
+      if (!video.videoWidth || !video.videoHeight || !canvas.width || !canvas.height) return;
+      var srcRatio = video.videoWidth / video.videoHeight;
+      var dstRatio = canvas.width / canvas.height;
+      if (srcRatio > dstRatio) {
+        var sh = video.videoHeight;
+        var sw = sh * dstRatio;
+        srcRect = { sx: (video.videoWidth - sw) / 2, sy: 0, sw: sw, sh: sh };
+      } else {
+        var sw2 = video.videoWidth;
+        var sh2 = sw2 / dstRatio;
+        srcRect = { sx: 0, sy: (video.videoHeight - sh2) / 2, sw: sw2, sh: sh2 };
+      }
+    }
+
+    function resize() {
+      var rect = figure.getBoundingClientRect();
+      canvas.width = Math.max(1, Math.round(rect.width));
+      canvas.height = Math.max(1, Math.round(rect.height));
+      updateSrcRect();
+    }
+
+    function drawFrame() {
+      if (video.readyState >= 2 && srcRect) {
+        ctx.drawImage(video, srcRect.sx, srcRect.sy, srcRect.sw, srcRect.sh, 0, 0, canvas.width, canvas.height);
+        try {
+          var frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          var data = frame.data;
+          for (var i = 0; i < data.length; i += 4) {
+            var luma = (data[i] + data[i + 1] + data[i + 2]) / 765;
+            var alpha = luma * 6 - 0.9;
+            data[i + 3] = alpha <= 0 ? 0 : alpha >= 1 ? 255 : Math.round(alpha * 255);
+          }
+          ctx.putImageData(frame, 0, 0);
+        } catch (e) {
+          /* keying unsupported in this context — raw frame stays visible */
+        }
+      }
+
+      if (typeof video.requestVideoFrameCallback === 'function') {
+        video.requestVideoFrameCallback(drawFrame);
+      } else {
+        window.requestAnimationFrame(drawFrame);
+      }
+    }
+
+    video.addEventListener('loadedmetadata', updateSrcRect);
+    window.addEventListener('resize', resize);
+    resize();
+
+    video.play().catch(function () {});
+
+    if (typeof video.requestVideoFrameCallback === 'function') {
+      video.requestVideoFrameCallback(drawFrame);
+    } else {
+      window.requestAnimationFrame(drawFrame);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initFloatingNav();
+  initHeroFigureKeying();
 });

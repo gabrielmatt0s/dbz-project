@@ -129,6 +129,12 @@
   padding: 0 1rem;
 }
 
+/* Fica invisivel ate o JS revelar — evita flash com fonte/posicao
+   provisorias enquanto a webfont e o GSAP ainda estao carregando */
+.hero__poster-line {
+  visibility: hidden;
+}
+
 /* 8. Pill */
 .hero__pill {
   margin: 0;

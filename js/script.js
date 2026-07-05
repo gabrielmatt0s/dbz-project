@@ -176,15 +176,21 @@ function initHeroFigureKeying() {
 }
 
 function initHeroScrollCinematic() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
   var hero = document.getElementById('hero');
   if (!hero) return;
 
   var posterLines = hero.querySelectorAll('.hero__poster-line');
   if (!posterLines.length) return;
 
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    Array.prototype.forEach.call(posterLines, function (line) {
+      line.style.visibility = '';
+    });
+    return;
+  }
+
   gsap.registerPlugin(ScrollTrigger);
+  gsap.set(posterLines, { visibility: 'visible' });
 
   var mm = gsap.matchMedia();
 

@@ -16,9 +16,6 @@
   --jornada-hud-maxw: 1400px;
   --jornada-timeline-mobile: 48px;
 
-  --jornada-numeral-opacity: 0.07;
-  --jornada-numeral-size: clamp(7rem, 20vw, 16rem);
-  --jornada-numeral-size-mobile: clamp(4.5rem, 34vw, 8rem);
   --jornada-kanji-opacity: 0.05;
 
   --jornada-parallax-strength: 0.4;
@@ -30,9 +27,14 @@
   --jornada-fs-counter: clamp(0.8rem, 1vw, 0.95rem);
 }
 
+/* #saga fica alto (100vh de palco + a distancia horizontal do trilho, calculada
+   em JS e escrita em --jornada-scroll-distance). O pin do palco NAO usa
+   ScrollTrigger pin:true: e feito em CSS via position: sticky no
+   .jornada__viewport, que fica preso em top:0 enquanto a distancia extra
+   rola por baixo dele e o GSAP traduz isso em translateX no trilho. */
 .jornada {
   position: relative;
-  overflow: hidden;
+  min-height: calc(100vh + var(--jornada-scroll-distance, 0px));
   background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 60%, var(--bg-deep) 100%);
 }
 
@@ -56,26 +58,6 @@
   opacity: 0.28;
 }
 
-.jornada__numerals {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0 4vw;
-}
-
-.jornada__numeral {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--jornada-numeral-size);
-  line-height: 1;
-  color: var(--ch-accent, var(--text-primary));
-  opacity: var(--jornada-numeral-opacity);
-  transform: translateY(-4%);
-  white-space: nowrap;
-}
-
 .jornada__kanji {
   position: absolute;
   bottom: -4%;
@@ -89,11 +71,12 @@
   white-space: nowrap;
 }
 
-/* 2. Viewport pinavel */
+/* 2. Viewport pinado (sticky) */
 .jornada__viewport {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -109,7 +92,7 @@
   width: 100%;
   max-width: var(--jornada-hud-maxw);
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 4vw, 3rem) 0;
+  padding: clamp(4.5rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 3rem) 0;
 }
 
 .jornada__hud-label {
@@ -208,21 +191,23 @@
   z-index: 1;
   flex: 1 1 auto;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: var(--jornada-gap);
   width: max-content;
-  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2rem, 6vh, 4rem);
+  padding: clamp(2rem, 5vh, 3.5rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 6vh, 4rem);
 }
 
-/* 5. Painel de abertura */
+/* 5. Painel de abertura — ocupa 100vw de fato (sem max-width), pra nenhum
+   card aparecer antes do usuario comecar a rolar dentro da secao. */
 .jornada__panel--intro {
   flex: 0 0 100vw;
-  height: 100vh;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 0.85rem;
-  max-width: 620px;
   padding: 0 clamp(1.25rem, 4vw, 2rem);
 }
 
@@ -278,6 +263,7 @@
 
 /* 6. Cards de capitulo */
 .jornada__card {
+  position: relative;
   flex: 0 0 var(--jornada-panel-width);
   display: flex;
   flex-direction: column;
@@ -287,11 +273,32 @@
   background: var(--bg-overlay);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  overflow: hidden;
+}
+
+.jornada__card-number {
+  position: absolute;
+  top: 0;
+  left: clamp(1.25rem, 2.5vw, 2rem);
+  z-index: 2;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  padding: 0.3em 0.7em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.9vw, 1.8rem);
+  line-height: 1;
+  color: var(--bg-deep);
+  background: var(--ch-accent);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px -4px var(--ch-accent);
 }
 
 .jornada__card-media {
   aspect-ratio: var(--jornada-media-ratio);
+  border-radius: var(--jornada-card-radius) var(--jornada-card-radius) 0 0;
   overflow: hidden;
 }
 
@@ -308,16 +315,6 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: clamp(1.1rem, 2vw, 1.5rem);
-}
-
-.jornada__card-eyebrow {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: clamp(0.65rem, 0.85vw, 0.75rem);
-  font-weight: 700;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ch-accent);
 }
 
 .jornada__card-title {
@@ -339,8 +336,13 @@
 
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
+  .jornada {
+    min-height: auto;
+  }
+
   .jornada__viewport {
-    min-height: 0;
+    position: static;
+    height: auto;
     overflow: visible;
   }
 
@@ -354,10 +356,6 @@
   .jornada__timeline {
     flex: 1 1 auto;
     height: var(--jornada-timeline-mobile);
-  }
-
-  .jornada__numeral {
-    font-size: var(--jornada-numeral-size-mobile);
   }
 
   .jornada__track {
@@ -383,6 +381,22 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .jornada {
+    min-height: auto;
+  }
+
+  .jornada__viewport {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .jornada__track {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .jornada__timeline-fill {
     transition: none;
   }

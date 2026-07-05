@@ -1,0 +1,258 @@
+/* ---------- Trailers ---------- */
+
+:root {
+  /* Tokens especificos da secao Trailers — geometria/estado, sem cores novas */
+  --trailers-card-maxw: 720px;
+  --trailers-card-radius: 20px;
+  --trailers-media-ratio: 16 / 9;
+  --trailers-backdrop-opacity: 0.06;
+  --trailers-glow-opacity: 0.28;
+}
+
+.trailers {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1.25rem, 4vw, 3rem);
+  background: var(--bg-deep);
+}
+
+/* 1. Fundo / atmosfera */
+.trailers::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 15%, var(--accent-star-glow) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 85%, var(--cosmic-cyan) 0%, transparent 70%);
+  opacity: var(--trailers-glow-opacity);
+}
+
+.trailers__backdrop-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 16vw, 12rem);
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  opacity: var(--trailers-backdrop-opacity);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 2. Cabecalho */
+.trailers__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  max-width: 640px;
+  margin: 0 auto clamp(2rem, 6vh, 3.5rem);
+}
+
+.trailers__eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent-star);
+}
+
+.trailers__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: var(--text-primary);
+}
+
+.trailers__subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* 3. Container / Carrossel */
+.trailers__container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--trailers-card-maxw);
+  margin: 0 auto;
+}
+
+.trailers__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trailers__slide {
+  display: none;
+}
+
+.trailers__slide--active {
+  display: block;
+}
+
+.trailers__card {
+  position: relative;
+  aspect-ratio: var(--trailers-media-ratio);
+  border-radius: var(--trailers-card-radius);
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--bg-surface), var(--bg-surface)),
+    linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-rose) 45%, var(--accent-star) 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 24px 60px -24px var(--accent-star-glow);
+}
+
+/* Overlay proprio ocultado visualmente: o player do YouTube ja exibe seu
+   proprio titulo/canal sobre a miniatura, e duplicar esse texto no card
+   criava duas legendas sobrepostas. Mantido no DOM (nao display:none) para
+   leitores de tela, que nao alcancam o texto renderizado dentro do iframe. */
+.trailers__header-card {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.trailers__player {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--bg-surface);
+}
+
+.trailers__iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Mesma razao do header-card: o YouTube ja mostra seu proprio link
+   "Assista no YouTube" sobre a miniatura, entao este CTA fica somente
+   acessivel a leitores de tela. */
+.trailers__cta {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 4. Controles */
+.trailers__controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  margin-top: clamp(1.25rem, 4vh, 2rem);
+}
+
+.trailers__arrow {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease-out-expo), border-color 0.3s var(--ease-out-expo),
+    transform 0.3s var(--ease-spring);
+}
+
+.trailers__arrow:hover {
+  background-color: var(--accent-star-dim);
+  border-color: var(--border-strong);
+}
+
+.trailers__arrow:active {
+  transform: scale(0.92);
+}
+
+.trailers__arrow:focus-visible {
+  outline: 2px solid var(--ring-focus);
+  outline-offset: 2px;
+}
+
+.trailers__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trailers__dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--border-strong);
+  cursor: pointer;
+  transition: width 0.3s var(--ease-out-expo), background-color 0.3s var(--ease-out-expo);
+}
+
+.trailers__dot--active {
+  width: 28px;
+  background: var(--cosmic-cyan);
+}
+
+.trailers__dot:focus-visible {
+  outline: 2px solid var(--ring-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .trailers {
+    padding: clamp(2.5rem, 10vw, 3.5rem) 1.1rem;
+  }
+
+  .trailers__arrow {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trailers__arrow,
+  .trailers__dot {
+    transition: none;
+  }
+}

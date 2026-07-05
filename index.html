@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="css/hero.css">
 <link rel="stylesheet" href="css/personagens.css">
 <link rel="stylesheet" href="css/jornada.css">
+<link rel="stylesheet" href="css/trailers.css">
+<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
@@ -27,45 +29,43 @@
     </nav>
 
     <section id="hero" class="hero">
-        <div class="hero__bg">
+        <div class="hero__bg-inner">
             <video class="hero__bg-video" src="assets/videos/hero-bg-namekusei.mp4" autoplay loop muted playsinline preload="auto"></video>
+            <div class="hero__overlay" aria-hidden="true"></div>
         </div>
 
-        <div class="hero__overlay" aria-hidden="true"></div>
-
-        <div class="hero__goku-glow" aria-hidden="true"></div>
-        <div class="hero__freeza-glow" aria-hidden="true"></div>
-
-        <div class="hero__figures">
+        <div class="hero__stage">
+            <div class="hero__goku-glow" aria-hidden="true"></div>
             <div class="hero__figure hero__figure--goku">
-                <video class="hero__figure-source" src="assets/videos/goku-hero.mp4" autoplay loop muted playsinline preload="auto"></video>
-                <canvas class="hero__figure-canvas" aria-hidden="true"></canvas>
+                <video class="hero__figure-video" src="assets/videos/goku-hero-alpha.webm" autoplay loop muted playsinline preload="auto"></video>
             </div>
+
+            <div class="hero__freeza-glow" aria-hidden="true"></div>
             <div class="hero__figure hero__figure--freeza">
                 <video class="hero__figure-source" src="assets/videos/freeza-hero.mp4" autoplay loop muted playsinline preload="auto"></video>
                 <canvas class="hero__figure-canvas" aria-hidden="true"></canvas>
             </div>
+
+            <div class="hero__overlay-front" aria-hidden="true"></div>
+
+            <div class="hero__poster">
+                <p class="hero__poster-line hero__pill">A Saga Lendária</p>
+                <h1 class="hero__title">
+                    <span class="hero__poster-line hero__title-line hero__title-line--main">Dragon Ball Z</span>
+                    <span class="hero__poster-line hero__title-line hero__title-line--saga">A Saga de Freeza</span>
+                </h1>
+                <p class="hero__poster-line hero__tagline">A batalha que forjou uma lenda</p>
+            </div>
+
+            <a class="hero__scroll" href="#personagens">
+                <span class="hero__scroll-label">Role para começar</span>
+                <span class="hero__scroll-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </span>
+            </a>
         </div>
-
-        <div class="hero__overlay-front" aria-hidden="true"></div>
-
-        <div class="hero__poster">
-            <p class="hero__pill">A Saga Lendária</p>
-            <h1 class="hero__title">
-                <span class="hero__title-line hero__title-line--main">Dragon Ball Z</span>
-                <span class="hero__title-line hero__title-line--saga">A Saga de Freeza</span>
-            </h1>
-            <p class="hero__tagline">A batalha que forjou uma lenda</p>
-        </div>
-
-        <a class="hero__scroll" href="#personagens">
-            <span class="hero__scroll-label">Role para começar</span>
-            <span class="hero__scroll-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </span>
-        </a>
     </section>
     <section id="personagens" class="personagens">
 
@@ -125,19 +125,11 @@
     </section>
     <section id="saga" class="jornada" aria-labelledby="jornada-title">
 
-        <div class="jornada__bg" aria-hidden="true">
-            <div class="jornada__numerals">
-                <span class="jornada__numeral" style="--ch-accent: var(--cosmic-cyan);">01</span>
-                <span class="jornada__numeral" style="--ch-accent: var(--cosmic-purple);">02</span>
-                <span class="jornada__numeral" style="--ch-accent: var(--accent-star);">03</span>
-                <span class="jornada__numeral" style="--ch-accent: var(--cosmic-rose);">04</span>
-                <span class="jornada__numeral" style="--ch-accent: var(--cosmic-cyan);">05</span>
-                <span class="jornada__numeral" style="--ch-accent: var(--accent-star);">06</span>
-            </div>
-            <p class="jornada__kanji">界王拳</p>
-        </div>
-
         <div class="jornada__viewport">
+
+            <div class="jornada__bg" aria-hidden="true">
+                <p class="jornada__kanji">界王拳</p>
+            </div>
 
             <header class="jornada__hud">
                 <p class="jornada__hud-label">A Jornada em Namekusei</p>
@@ -196,66 +188,66 @@
                 </div>
 
                 <article class="jornada__card" style="--ch-accent: var(--cosmic-cyan);" data-chapter="1">
+                    <span class="jornada__card-number">01</span>
                     <div class="jornada__card-media">
                         <img src="assets/images/planete_namek_grande.webp" alt="Planeta Namekusei visto à distância" loading="lazy">
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 01</p>
                         <h3 class="jornada__card-title">Chegada em Namekusei</h3>
                         <p class="jornada__card-desc">Gohan, Kuririn e Bulma viajam até o distante planeta Namekusei em busca das Esferas do Dragão para reviver seus amigos — mas Freeza e seus soldados já estão lá com o mesmo objetivo.</p>
                     </div>
                 </article>
 
                 <article class="jornada__card" style="--ch-accent: var(--cosmic-purple);" data-chapter="2">
+                    <span class="jornada__card-number">02</span>
                     <div class="jornada__card-media">
                         <img src="assets/images/GinyuTokusentai.webp" alt="Esquadrão Ginyu reunido" loading="lazy">
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 02</p>
                         <h3 class="jornada__card-title">O Esquadrão Ginyu ataca</h3>
                         <p class="jornada__card-desc">Freeza convoca a temida força de elite. O Capitão Ginyu troca de corpo com Goku, e só a astúcia dos Guerreiros Z impede o desastre antes da chegada do verdadeiro perigo.</p>
                     </div>
                 </article>
 
                 <article class="jornada__card" style="--ch-accent: var(--accent-star);" data-chapter="3">
+                    <span class="jornada__card-number">03</span>
                     <div class="jornada__card-media">
                         <img src="assets/images/kuririn-morto-por-freeza-1200x720.webp" alt="Freeza ao lado de Kuririn gritando" loading="lazy">
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 03</p>
                         <h3 class="jornada__card-title">A morte de Kuririn</h3>
                         <p class="jornada__card-desc">No auge da batalha, Freeza assassina Kuririn diante de Goku. A perda do amigo de toda uma vida acende uma fúria capaz de despertar uma lenda adormecida.</p>
                     </div>
                 </article>
 
                 <article class="jornada__card" style="--ch-accent: var(--cosmic-rose);" data-chapter="4">
+                    <span class="jornada__card-number">04</span>
                     <div class="jornada__card-media">
                         <img src="assets/images/O%20Despertar%20do%20Super%20Saiyajin.webp" alt="Goku Super Saiyajin com aura dourada" loading="lazy">
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 04</p>
                         <h3 class="jornada__card-title">O Despertar do Super Saiyajin</h3>
                         <p class="jornada__card-desc">Cabelos dourados, aura flamejante: pela primeira vez em mil anos, um Saiyajin alcança a transformação lendária. Goku enfim encara Freeza de igual para igual.</p>
                     </div>
                 </article>
 
                 <article class="jornada__card" style="--ch-accent: var(--cosmic-cyan);" data-chapter="5">
+                    <span class="jornada__card-number">05</span>
                     <div class="jornada__card-media">
                         <video src="assets/videos/batalha-final.mp4" autoplay loop muted playsinline preload="none" aria-label="Batalha de energia entre Goku e Freeza"></video>
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 05</p>
                         <h3 class="jornada__card-title">A Batalha Final</h3>
                         <p class="jornada__card-desc">Goku Super Saiyajin contra Freeza em 100% de seu poder. Um confronto colossal que define o destino do universo enquanto Namekusei se desfaz a cada golpe.</p>
                     </div>
                 </article>
 
                 <article class="jornada__card" style="--ch-accent: var(--accent-star);" data-chapter="6">
+                    <span class="jornada__card-number">06</span>
                     <div class="jornada__card-media">
                         <img src="assets/images/namekusei-destruicao.webp" alt="Namekusei em destruição no espaço" loading="lazy">
                     </div>
                     <div class="jornada__card-body">
-                        <p class="jornada__card-eyebrow">Capítulo 06</p>
                         <h3 class="jornada__card-title">A destruição de Namekusei</h3>
                         <p class="jornada__card-desc">Com o planeta à beira da explosão, Goku enfrenta seus últimos instantes contra o tirano e prova que a esperança — e a coragem — sempre encontram um caminho.</p>
                     </div>
@@ -266,8 +258,286 @@
         </div>
 
     </section>
-    <section id="trailers" class="section-stub"></section>
+    <section id="trailers" class="trailers">
 
+        <div class="trailers__header">
+            <p class="trailers__eyebrow">Assista agora</p>
+            <h2 class="trailers__title">Melhores momentos</h2>
+            <p class="trailers__subtitle">A batalha de Goku contra Freeza em Namekusei</p>
+        </div>
+
+        <div class="trailers__backdrop-text" aria-hidden="true">TRAILERS</div>
+
+        <div class="trailers__container">
+            <ul class="trailers__track" role="region" aria-label="Carrossel de trailers">
+
+                <li id="trailers-slide-1" class="trailers__slide trailers__slide--active" data-index="0">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">Goku Goes Super Saiyan for the First Time | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Crunchyroll</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="Goku Goes Super Saiyan for the First Time | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/c7jvWOfwc1M"
+                                src="https://www.youtube-nocookie.com/embed/c7jvWOfwc1M"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-2" class="trailers__slide" data-index="1">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">Freeza Convoca o Esquadrão Ginyu | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Crunchyroll</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="Freeza Convoca o Esquadrão Ginyu | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/CE5RQyafYaE"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-3" class="trailers__slide" data-index="2">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">A Morte de Kuririn | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Crunchyroll</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="A Morte de Kuririn | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/WXJN3ZPFW2o"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-4" class="trailers__slide" data-index="3">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">A Destruição de Namekusei | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Crunchyroll</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="A Destruição de Namekusei | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/anFoJ9WOkWQ"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-5" class="trailers__slide" data-index="4">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">Goku Vs Frieza (Full Fight) | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Z FIGHTER</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="Goku Vs Frieza (Full Fight) | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/WgKs_gtZW-4"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-6" class="trailers__slide" data-index="5">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">Goku's Kaio-ken x20 Against Frieza | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Auddy</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="Goku's Kaio-ken x20 Against Frieza | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/uu8e66uexXo"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-7" class="trailers__slide" data-index="6">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">All-Out Battle! SSJ Goku vs Full Power Frieza | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Gowasu Your Daily Godtuber</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="All-Out Battle! SSJ Goku vs Full Power Frieza | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/5puEsqMe9kI"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+                <li id="trailers-slide-8" class="trailers__slide" data-index="7">
+                    <div class="trailers__card">
+                        <div class="trailers__header-card">
+                            <span class="trailers__logo" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <h3 class="trailers__video-title">Freeza Kills Krillin | Dragon Ball Z</h3>
+                                <p class="trailers__video-source">Whatcha Say</p>
+                            </div>
+                        </div>
+                        <div class="trailers__player">
+                            <iframe
+                                class="trailers__iframe"
+                                title="Freeza Kills Krillin | Dragon Ball Z"
+                                data-src="https://www.youtube-nocookie.com/embed/hJz3u0MQplU"
+                                src="about:blank"
+                                width="560"
+                                height="315"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="trailers__cta">Assista no <svg class="trailers__yt-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/></svg> YouTube</p>
+                    </div>
+                </li>
+
+            </ul>
+
+            <div class="trailers__controls">
+                <button class="trailers__arrow trailers__arrow--prev" aria-label="Vídeo anterior" type="button">
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+
+                <div class="trailers__dots" role="tablist" aria-label="Navegação de slides">
+                    <button id="trailers-dot-1" class="trailers__dot trailers__dot--active" role="tab" aria-selected="true" aria-controls="trailers-slide-1" type="button" aria-label="Ir para slide 1"></button>
+                    <button id="trailers-dot-2" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-2" type="button" aria-label="Ir para slide 2"></button>
+                    <button id="trailers-dot-3" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-3" type="button" aria-label="Ir para slide 3"></button>
+                    <button id="trailers-dot-4" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-4" type="button" aria-label="Ir para slide 4"></button>
+                    <button id="trailers-dot-5" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-5" type="button" aria-label="Ir para slide 5"></button>
+                    <button id="trailers-dot-6" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-6" type="button" aria-label="Ir para slide 6"></button>
+                    <button id="trailers-dot-7" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-7" type="button" aria-label="Ir para slide 7"></button>
+                    <button id="trailers-dot-8" class="trailers__dot" role="tab" aria-selected="false" aria-controls="trailers-slide-8" type="button" aria-label="Ir para slide 8"></button>
+                </div>
+
+                <button class="trailers__arrow trailers__arrow--next" aria-label="Próximo vídeo" type="button">
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="trailers-carousel-live" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <h2 class="footer__title">Dragon Ball Z: A Saga do Freeza</h2>
+            <p class="footer__disclaimer">
+                Projeto conceitual para fins educacionais. Dragon Ball, Dragon Ball Z e personagens relacionados são criação de Akira Toriyama e marcas registradas da Bird Studio / Shueisha e Toei Animation.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 

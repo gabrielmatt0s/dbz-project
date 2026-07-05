@@ -278,6 +278,32 @@ function initHeroScrollCinematic() {
       }
     });
 
+    tlMobile.fromTo('.hero__figure--goku, .hero__goku-glow', { xPercent: 0 }, {
+      xPercent: -120,
+      ease: 'power2.in',
+      duration: 1
+    }, 0);
+
+    tlMobile.fromTo('.hero__figure--goku', { scale: 1 }, {
+      scale: 0.55,
+      transformOrigin: 'left bottom',
+      ease: 'power2.in',
+      duration: 1
+    }, 0);
+
+    tlMobile.fromTo('.hero__figure--freeza, .hero__freeza-glow', { xPercent: 0 }, {
+      xPercent: 120,
+      ease: 'power2.in',
+      duration: 1
+    }, 0);
+
+    tlMobile.fromTo('.hero__figure--freeza', { scale: 1 }, {
+      scale: 0.55,
+      transformOrigin: 'right bottom',
+      ease: 'power2.in',
+      duration: 1
+    }, 0);
+
     tlMobile.fromTo('.hero__bg-video', { scale: 1 }, {
       scale: 1.12,
       ease: 'none',
